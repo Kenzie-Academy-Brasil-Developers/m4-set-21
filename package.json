@@ -1,0 +1,11 @@
+{
+  "name": "m4-set21",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.3",
+    "uuidv4": "^6.2.13"
+  }
+}
