@@ -5,30 +5,65 @@ const app = express();
 
 app.use(express.json());
 
-let users = [];
+const repositories = [];
 
-app.get("/hello", (request, response) => {
-  response.json({
-    hello: "World",
-  });
+app.get("/repositories", (request, response) => {
+  return response.json(repositories);
 });
 
-app.post("/users", (request, response) => {
-  const { name, email, city } = request.body;
+app.post("/repositories", (request, response) => {
+  const { title, url, techs } = request.body;
 
-  const user = { id: uuid(), name, email, city };
+  const repository = {
+    id: uuid(),
+    title,
+    url,
+    techs,
+    likes: 0,
+  };
 
-  users = [...users, user];
+  repositories.push(repository);
 
-  /* mesma coisa que:
-     users.push(user) 
-  */
-
-  return response.status(201).json(user);
+  return response.status(201).json(repository);
 });
 
-app.get("/users", (request, response) => {
-  return response.json(users);
+app.post("/repositories/:id/like", (request, response) => {
+  const { id } = request.params;
+
+  let repository = repositories.find((item) => item.id === id);
+
+  if (!repository) {
+    return response.status(400).json({
+      error: "Repository not found",
+    });
+  }
+
+  repository.likes = repository.likes + 1;
+
+  return response.json(repository);
+});
+
+app.put("/repositories/:id", (request, response) => {
+  const { id } = request.params;
+
+  let repository = repositories.filter((item) => item.id === id);
+
+  if (!repository.length) {
+    return response.status(400).json({
+      error: "Repository not found",
+    });
+  }
+
+  const { title, url, techs } = request.body;
+
+  const updatedRepo = { id, title, url, techs, likes: 0 };
+
+  repositories.splice(repository);
+  repository[0] = updatedRepo;
+
+  repositories.push(repository[0]);
+
+  return response.json(repository[0]);
 });
 
 app.listen(3333, () => {
