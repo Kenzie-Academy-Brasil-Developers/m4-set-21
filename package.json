@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "dev": "nodemon"
   },
   "dependencies": {
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
-    "uuidv4": "^6.2.13"
+    "sucrase": "^3.20.3",
+    "uuid": "^8.3.2"
   }
 }
