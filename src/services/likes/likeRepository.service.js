@@ -1,4 +1,4 @@
-import repositories from "../../database";
+import { repositories } from "../../database";
 
 const likeRepositoryService = ({ id }) => {
   let repository = repositories.find((item) => item.id === id);

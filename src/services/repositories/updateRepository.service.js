@@ -1,4 +1,4 @@
-import repositories from "../../database";
+import { repositories } from "../../database";
 
 const updateRepositoryService = ({ id, title, techs, url }) => {
   let repository = repositories.find((item) => item.id === id);

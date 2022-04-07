@@ -1,6 +1,7 @@
 import { Router } from "express";
 import LikesController from "../controllers/likes.controller";
 import RepositoriesController from "../controllers/repositories.controller";
+import ensureAuthMiddleware from "../middlewares/ensureAuth.middleware";
 
 const repositoriesRouter = Router();
 
@@ -17,6 +18,8 @@ const likesController = new LikesController();
 
 repositoriesRouter.get("", repositoriesController.index);
 repositoriesRouter.get("/:id", repositoriesController.show);
+
+repositoriesRouter.use(ensureAuthMiddleware);
 
 repositoriesRouter.post("", repositoriesController.store);
 repositoriesRouter.put("/:id", repositoriesController.update);

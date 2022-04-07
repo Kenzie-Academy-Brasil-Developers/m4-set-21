@@ -1,4 +1,4 @@
-import repositories from "../../database";
+import { repositories } from "../../database";
 
 const deleteRepositoryService = ({ id }) => {
   let repository = repositories.findIndex((repository) => repository.id === id);

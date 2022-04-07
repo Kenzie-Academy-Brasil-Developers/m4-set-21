@@ -9,7 +9,15 @@ export default class RepositoriesController {
   store(request, response) {
     const { title, url, techs } = request.body;
 
-    const repository = createRepositoryService({ title, url, techs });
+    console.log(request.user);
+
+    const repository = createRepositoryService({
+      title,
+      url,
+      techs,
+      user_id: request.user.id,
+      banana: request.user.banana,
+    });
 
     return response.status(201).json(repository);
   }
