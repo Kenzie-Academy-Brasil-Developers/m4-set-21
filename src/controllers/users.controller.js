@@ -1,4 +1,5 @@
-import createUserService from "../services/createUser.service";
+import createUserService from "../services/users/createUser.service";
+import listUsersService from "../services/users/listUsers.service";
 
 export default class UserController {
   async store(request, response) {
@@ -13,5 +14,13 @@ export default class UserController {
     }
   }
 
-  async index(request, response) {}
+  async index(request, response) {
+    try {
+      const users = await listUsersService();
+
+      return response.json(users);
+    } catch (err) {
+      return response.status(500).json(err);
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import database from "../database";
+import database from "../../database";
 import * as bcrypt from "bcryptjs";
 
 const createUserService = async ({ email, name, password }) => {
