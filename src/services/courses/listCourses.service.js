@@ -3,7 +3,7 @@ import database from "../../database";
 const listCoursesService = async () => {
   try {
     const res = await database.query(
-      "SELECT * FROM courses c INNER JOIN users u ON c.creator_id = u.id;"
+      "SELECT c.*, u.id user_id, u.name, u.email FROM courses c INNER JOIN users u ON c.creator_id = u.id;"
     );
 
     const courses = res.rows.map((row) => {
@@ -16,7 +16,7 @@ const listCoursesService = async () => {
         price,
         duration_hours,
         user: {
-          id: row.creator_id,
+          id: row.user_id,
           name: row.name,
           email: row.email,
         },
