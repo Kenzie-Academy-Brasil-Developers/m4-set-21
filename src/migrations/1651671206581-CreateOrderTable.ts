@@ -1,13 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUserTable1651585128014 implements MigrationInterface {
-  // Dentro do metodo up, descrevo o que a minha migrations irá criar/atualizar no banco
+export class CreateOrderTable1651671206581 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
-
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "orders",
         columns: [
           {
             name: "id",
@@ -17,16 +14,7 @@ export class CreateUserTable1651585128014 implements MigrationInterface {
             default: "uuid_generate_v4()",
           },
           {
-            name: "name",
-            type: "varchar",
-            length: "255",
-          },
-          {
-            name: "email",
-            type: "varchar",
-          },
-          {
-            name: "password",
+            name: "desk",
             type: "varchar",
           },
           {
@@ -46,6 +34,6 @@ export class CreateUserTable1651585128014 implements MigrationInterface {
 
   // Dentro do método down eu faço o contrário
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("orders");
   }
 }
