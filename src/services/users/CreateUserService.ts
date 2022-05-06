@@ -14,7 +14,7 @@ interface UserDataParams {
 
 export default class CreateUserService {
   async execute({ email, name, password }: UserDataParams): Promise<User> {
-    const userRepository = AppDataSource.manager.getRepository(User);
+    const userRepository = AppDataSource.getRepository(User);
 
     // Esquecer o await transforma a promise em um valor truthy
     // Promise<pending> === true
@@ -23,6 +23,8 @@ export default class CreateUserService {
         email,
       },
     });
+
+    // SELECT * FROM users WHERE email = $1, [email]
 
     if (checkUserExists) {
       throw new AppError("Email already exists", 401);

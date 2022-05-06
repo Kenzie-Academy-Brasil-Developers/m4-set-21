@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { AppDataSource } from "../data-source";
+import User from "../models/User";
 import CreateUserService from "../services/users/CreateUserService";
 
 export default class UserController {
@@ -13,8 +15,14 @@ export default class UserController {
       password,
     });
 
-    delete user.password;
-
     return response.status(201).json(user);
+  }
+
+  static async index(request: Request, response: Response) {
+    const userRepository = AppDataSource.getRepository(User);
+
+    const users = await userRepository.find();
+
+    return response.json(users);
   }
 }
