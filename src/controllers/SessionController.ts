@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import AuthService from "../services/sessions/AuthService";
+import AuthService from "../services/sessions/Auth.service";
 
 export default class SessionController {
   static async store(request: Request, response: Response) {

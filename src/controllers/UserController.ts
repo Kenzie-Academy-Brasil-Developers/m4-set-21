@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import User from "../models/User";
-import CreateUserService from "../services/users/CreateUserService";
+import CreateUserService from "../services/users/CreateUser.service";
 
 export default class UserController {
   static async store(request: Request, response: Response) {
