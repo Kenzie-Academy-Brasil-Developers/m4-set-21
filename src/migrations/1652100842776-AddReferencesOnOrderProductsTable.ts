@@ -8,7 +8,7 @@ export class AddReferencesOnOrderProductsTable1652100842776
       "order_products",
       new TableForeignKey({
         name: "OrdersFK", // NOME DA CONSTRAINT
-        columnNames: ["order_id"], // COLUNA QUE CONTEM A REFERENCIA
+        columnNames: ["orderId"], // COLUNA QUE CONTEM A REFERENCIA
         referencedColumnNames: ["id"], // COLUNA QUE SERÁ REFERENCIADA
         referencedTableName: "orders", // TABELA REFERENCIADA
         onDelete: "CASCADE", // TATICA DE EXCLUSAO
@@ -20,7 +20,7 @@ export class AddReferencesOnOrderProductsTable1652100842776
       "order_products",
       new TableForeignKey({
         name: "ProductsFK", // NOME DA CONSTRAINT
-        columnNames: ["product_id"], // COLUNA QUE CONTEM A REFERENCIA
+        columnNames: ["productId"], // COLUNA QUE CONTEM A REFERENCIA
         referencedColumnNames: ["id"], // COLUNA QUE SERÁ REFERENCIADA
         referencedTableName: "products", // TABELA REFERENCIADA
         onDelete: "SET NULL", // TATICA DE EXCLUSAO

@@ -16,12 +16,12 @@ export class CreateOrderProductTable1652100315459
             default: "uuid_generate_v4()",
           },
           {
-            name: "product_id",
+            name: "productId",
             type: "uuid",
             isNullable: true,
           },
           {
-            name: "order_id",
+            name: "orderId",
             type: "uuid",
           },
           {

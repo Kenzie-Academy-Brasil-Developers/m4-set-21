@@ -16,7 +16,7 @@ productRouter.post(
   ProductController.store
 );
 productRouter.get("/", ProductController.index);
-productRouter.patch("/:product_id", ProductController.update);
-productRouter.delete("/:product_id", ProductController.delete);
+productRouter.patch("/:productId", ProductController.update);
+productRouter.delete("/:productId", ProductController.delete);
 
 export default productRouter;

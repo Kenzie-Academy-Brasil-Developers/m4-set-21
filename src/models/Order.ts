@@ -7,6 +7,7 @@ import {
   OneToMany,
 } from "typeorm";
 import OrderProduct from "./OrderProduct";
+import { Expose } from "class-transformer";
 
 /* Models / Entities são a nossa descrição / 
 representação da tabela no banco de dados */
@@ -40,6 +41,14 @@ class Order {
 
   @Column()
   desk: string;
+
+  @Expose({ name: "subtotal" })
+  getSubtotal(): number {
+    return this.products.reduce(
+      (acc, actual) => acc + Number(actual.product.price),
+      0
+    );
+  }
 
   @CreateDateColumn()
   created_at: Date;

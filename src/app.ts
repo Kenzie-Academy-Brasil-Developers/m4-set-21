@@ -4,13 +4,11 @@ import "express-async-errors";
 
 import routes from "./routes";
 import AppError from "./errors/AppError";
-import { pagination } from "typeorm-pagination";
 
 const app = express();
 
 app.use(express.json());
 
-app.use(pagination);
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {

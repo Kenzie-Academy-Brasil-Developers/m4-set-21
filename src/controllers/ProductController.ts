@@ -9,9 +9,9 @@ export default class UserController {
   static async store(request: Request, response: Response) {
     const { description, price, title, img_url } = request.body;
 
-    const createUser = new CreateProductService();
+    const createProduct = new CreateProductService();
 
-    const product = await createUser.execute({
+    const product = await createProduct.execute({
       description,
       price,
       title,
@@ -30,7 +30,7 @@ export default class UserController {
   }
 
   static async update(request: Request, response: Response) {
-    const { product_id } = request.params;
+    const { productId } = request.params;
     const { description, price, title, img_url } = request.body;
 
     const updateService = new UpdateProductService();
@@ -40,19 +40,19 @@ export default class UserController {
       price,
       title,
       img_url,
-      id: product_id,
+      id: productId,
     });
 
     return response.json(product);
   }
 
   static async delete(request: Request, response: Response) {
-    const { product_id } = request.params;
+    const { productId } = request.params;
 
     const deleteService = new DeleteProductService();
 
     await deleteService.execute({
-      id: product_id,
+      id: productId,
     });
 
     return response.status(204).json();
