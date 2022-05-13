@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --ignore-watch node_modules src/app.ts",
     "typeorm": "typeorm-ts-node-commonjs",
+    "start": "node dist/src/server.js",
     "build": "tsc",
     "test": "jest"
   },
